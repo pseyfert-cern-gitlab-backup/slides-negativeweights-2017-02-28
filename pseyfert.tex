@@ -1,0 +1,193 @@
+\documentclass[table,xcolor=dvipsnames,professionalfonts]{beamer}
+\usepackage{xcolor}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{feynmp}
+\usepackage{xspace}
+\usepackage{slashed}
+%\usepackage[utopia]{mathdesign}
+\usepackage[charter]{mathdesign}
+\usepackage[UKenglish]{babel}
+\usepackage[utf8]{inputenc}
+%\usepackage{lmodern}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{appendixnumberbeamer}
+%\usepackage{hepparticles}
+%\usepackage{hepnicenames}
+\usepackage{hepunits}
+\usepackage{bbm}
+
+\ifpdf
+\usepackage{epstopdf}
+\usepackage[protrusion=true,expansion=true,tracking]{microtype}
+%\DeclareGraphicsRule{*}{mps}{*}{}
+\fi
+
+\usepackage{listings}
+\usepackage[framemethod=tikz]{mdframed}
+\lstloadlanguages{C++}
+\makeatletter
+\newcommand{\srcsize}{\@setfontsize{\srcsize}{5pt}{5pt}}
+\makeatother
+\lstset{language=[11]C++,
+  literate= % define some ligatures for PragmataPro
+  {!!}{\texttt{!!}}2 {::}{\texttt{::}}2 {++}{\texttt{++}}2
+  {--}{\texttt{--}}2 {()}{\texttt{()}}2 {\[\]}{\texttt{[]}}2
+  {==}{\texttt{==}}2 {!=}{\texttt{!=}}2 {>=}{\texttt{>=}}2
+  {<=}{\texttt{<=}}2 {&&}{\texttt{\&\&}}2 {||}{\texttt{||}}2
+  {!>}{\texttt{!>}}2 {\#(}{\texttt{\#(}}2 {\#_}{\texttt{\#_}}2
+  {\#\{}{\texttt{\#\{}}2 {\#?}{\texttt{\#?}}2 {\#>}{\texttt{\#>}}2
+  {\%=}{\texttt{\%=}}2 {+=}{\texttt{+=}}2 {-=}{\texttt{-=}}2
+  {*=}{\texttt{*=}}2 {/=}{\texttt{/=}}2 {&=}{\texttt{&=}}2
+  {^=}{\texttt{^=}}2 {|=}{\texttt{|=}}2 {~=}{\texttt{~=}}2
+  {<<}{\texttt{<<}}2 {>>}{\texttt{>>}}2 {->}{\texttt{->}}2
+  {__}{\texttt{\_\_}}2
+  {!!!}{\texttt{!!!}}3 {>>=}{\texttt{>>=}}3 {<<=}{\texttt{<<=}}3
+  {/==}{\texttt{/==}}3 {...}{\texttt{...}}3,
+  deletekeywords=[1]{auto,const,static,volatile,void,char,short,int,long,unsigned,float,double,inline,template,typename,namespace,class,union,struct,enum,true,false,nullptr},
+  morekeywords=[2]{auto,const,static,volatile},
+  morekeywords=[3]{void,char,short,int,long,unsigned,float,double,size_type,inline,iterator,const_iterator,reference,const_reference,Uninitialised,template,typename,namespace,class,union,struct,enum},
+  morekeywords=[4]{std,our,LHCb,T,ARGS},
+  morekeywords=[5]{true,false,nullptr,__LINE__,__FILE__,__func__},
+  basicstyle=\srcsize\ttfamily\color{black},
+  keywordstyle=[1]\color{magenta}\textbf,
+  keywordstyle=[2]\color{orange}\textbf,
+  keywordstyle=[3]\color{cyan}\textbf,
+  keywordstyle=[4]\color{black},
+  keywordstyle=[5]\color{violet!80!white},
+  directivestyle=\color{blue!50!white},
+  commentstyle=\color{blue}\textsl,
+  stringstyle=\color{gray},
+  identifierstyle=\color{green!50!black},
+breaklines=true,breakautoindent=true}
+
+\mdfdefinestyle{listing}{
+  backgroundcolor=white!96!black,hidealllines,
+  skipabove=0pt,skipbelow=0pt,
+  leftmargin=0pt,rightmargin=0pt,
+  innertopmargin=-5pt,innerbottommargin=-5pt,
+  innerleftmargin=0pt,innerrightmargin=0pt,
+  linewidth=0pt,middlelinewidth=0pt,
+  startcode={\vspace{-3pt}},endcode={\vspace{-2ex}}
+}
+\surroundwithmdframed[style=listing]{lstlisting}
+
+\usepackage{fontspec}
+%\setmainfont{CharisSIL}[]
+%\setsansfont{FrontPagePro}[Scale=MatchLowercase]
+\setmonofont{PragmataPro}[Scale=MatchLowercase]
+
+\usetheme{Rochester}
+%\usecolortheme{beaver}
+\usecolortheme[named=NavyBlue]{structure}
+\setbeamercolor{section in toc}{fg=black,bg=white}
+%\setbeamercolor{alerted text}{fg=blue}
+\setbeamercolor{structure}{fg=blue!80!black}
+\setbeamercolor*{palette primary}{fg=black,bg=gray!30!white}
+\setbeamercolor*{palette secondary}{fg=black,bg=gray!15!white}
+\setbeamercolor*{palette tertiary}{bg=blue!80!black,fg=gray!10!white}
+\setbeamercolor*{palette quaternary}{fg=blue,bg=gray!5!white}
+\setbeamercolor*{sidebar}{fg=blue,bg=gray!15!white}
+\setbeamercolor*{palette sidebar primary}{fg=blue!10!black}
+\setbeamercolor*{palette sidebar secondary}{fg=white}
+\setbeamercolor*{palette sidebar tertiary}{fg=blue!50!black}
+\setbeamercolor*{palette sidebar quaternary}{fg=gray!10!white}
+\setbeamercolor{titlelike}{parent=palette primary,fg=blue,bg=white}
+\setbeamercolor{frametitle}{fg=white,bg=blue!80!black}
+\setbeamercolor{frametitle right}{bg=gray!60!white}
+\setbeamercolor*{separation line}{}
+\setbeamercolor*{fine separation line}{}
+\useinnertheme{rectangles}
+\useoutertheme{infolines}
+\usefonttheme[onlymath]{serif}
+%\usefonttheme{professionalfonts}
+
+%\loadgraphics{logo-pi-bunt3,lhcb-logo,unisiegel-gray}
+
+\newsavebox{\unilogo} \newsavebox{\pilogo} \newsavebox{\lhcblogo}
+\sbox{\unilogo}{\includegraphics[height=1.2cm]{../cern-logo-gray.eps}}
+\sbox{\pilogo}{\includegraphics[height=0.75cm]{../cern-logo.eps}}
+\sbox{\lhcblogo}{\includegraphics[height=0.75cm]{../lhcb-logo.eps}}
+
+\setbeamertemplate{footline}
+{
+  \leavevmode%
+  \hbox{%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,left]{author in head/foot}%
+      \usebeamerfont{author in head/foot}\vtop{\vskip-2.25ex\hbox{\resizebox{!}{3.25ex}{\usebox{\pilogo}}}}%
+      \hfill \insertshortauthor~~(\insertshortinstitute) \hfill%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,center]{title in head/foot}%
+      \usebeamerfont{title in head/foot}\insertshorttitle%
+    \end{beamercolorbox}%
+    \begin{beamercolorbox}[wd=.333333\paperwidth,ht=2.25ex,dp=1ex,right]{date in head/foot}%
+      \usebeamerfont{date in head/foot}\insertshortdate{}\hspace*{2em}%
+      \insertframenumber{} / \inserttotalframenumber\hspace*{2ex} \vtop{\vskip-2.25ex\hbox{\resizebox{!}{3.25ex}{\usebox{\lhcblogo}}}}%
+    \end{beamercolorbox}%
+  }%
+  \vskip0pt%
+}
+
+\setbeamertemplate{frametitle}
+{
+  \ifbeamercolorempty[bg]{frametitle}{}{\nointerlineskip}%
+  \leavevmode%
+  \vskip-2pt\hbox{%
+    \begin{beamercolorbox}[wd=\paperwidth,left]{frametitle}%
+      \usebeamerfont{frametitle}%
+      \vskip.125ex%
+      \hbox{\vtop{\raisebox{-1ex}[1ex][1ex]{\makebox[0pt][l]{\usebox{\unilogo}}}%
+      \hspace{1em}\strut\insertframetitle\strut}\par%
+      {%
+        \ifx\insertframesubtitle\@empty%
+        \else%
+        {\usebeamerfont{framesubtitle}\usebeamercolor[fg]{framesubtitle}\insertframesubtitle\strut\par}%
+        \fi
+      }}%
+    \end{beamercolorbox}%
+  }%
+}
+
+
+\definecolor{bandgreen}{rgb}{0.4,0.8,0.4}
+\newcommand{\FIXME}{{\color{red}FIXME}}
+\newcommand{\arxiv}[1]{{\color{gray}\tiny$[$\href{http://arxiv.org/abs/#1}{arXiv:#1}$]$}}
+\newcommand{\jref}[2]{{\color{gray}\tiny$[$\href{#2}{#1}$]$}}
+\newcommand{\myhref}[2]{\href{#1}{\textcolor{blue}{#2}}}
+
+
+\author[Paul]{Paul Seyfert}
+\institute[CERN]{}
+\date[\today]{}
+\title{\myhref{https://github.com/pseyfert/tmva-branch-adder}{tmva-branch-adder}}
+
+
+\begin{document}
+\maketitle
+
+\section{introduction}
+\subsection{introduction}
+%\begin{frame}[fragile]{introduction}
+\begin{frame}{introduction}
+\begin{itemize}
+\item optimising code is sometimes considered a black art
+%\begin{lstlisting}
+%// branchless implementation of min/max for unsigned
+%static inline unsigned min(unsigned a, unsigned b) noexcept
+%{
+%    const unsigned mask = -(a < b);
+%    return (a \& mask) | (b \& ~mask);
+%}
+%static inline unsigned max(unsigned a, unsigned b) noexcept
+%{
+%    const unsigned mask = -(a > b);
+%    return (a \& mask) | (b \& ~mask);
+%}
+%\end{lstlisting}
+\item true to some extent -- occasionally, you need the odd dirty trick
+\item but most of the time, it's down to:
+\end{itemize}
+\end{frame}
+
+\end{document}
