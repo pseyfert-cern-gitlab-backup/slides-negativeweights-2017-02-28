@@ -1,0 +1,29 @@
+image: gitlab-registry.cern.ch/pseyfert/texmachine
+
+before_script:
+  - echo "deb http://deb.debian.org/debian stable main contrib non-free" >> /etc/apt/sources.list
+  - apt-get update
+  - apt-get -y upgrade
+  - apt-get install -y ttf-mscorefonts-installer
+note:
+    script:
+      - make
+    artifacts:
+      paths:
+        - pseyfert.pdf
+
+# gitlab CI integration for pseyfert/Vertex2017.
+# Copyright (C) 2017  Paul Seyfert <pseyfert@cern.ch>
+
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU Affero General Public License for more details.
+
+# You should have received a copy of the GNU Affero General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
