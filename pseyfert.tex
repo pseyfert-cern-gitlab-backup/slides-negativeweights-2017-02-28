@@ -2,12 +2,13 @@
 \usepackage{xcolor}
 \usepackage{booktabs}
 \usepackage{graphicx}
+\usepackage[percent]{overpic}
 \usepackage{tikz}
 \usepackage{feynmp}
 \usepackage{xspace}
 \usepackage{slashed}
 %\usepackage[utopia]{mathdesign}
-\usepackage[charter]{mathdesign}
+%\usepackage[charter]{mathdesign}
 \usepackage[UKenglish]{babel}
 \usepackage[utf8]{inputenc}
 %\usepackage{lmodern}
@@ -16,7 +17,7 @@
 %\usepackage{hepparticles}
 %\usepackage{hepnicenames}
 \usepackage{hepunits}
-\usepackage{bbm}
+%\usepackage{bbm}
 
 \ifpdf
 \usepackage{epstopdf}
@@ -74,7 +75,7 @@ breaklines=true,breakautoindent=true}
 \surroundwithmdframed[style=listing]{lstlisting}
 
 \usepackage{fontspec}
-%\setmainfont{CharisSIL}[]
+\setmainfont{Times New Roman}[]
 %\setsansfont{FrontPagePro}[Scale=MatchLowercase]
 \setmonofont{PragmataPro}[Scale=MatchLowercase]
 
@@ -105,10 +106,11 @@ breaklines=true,breakautoindent=true}
 
 %\loadgraphics{logo-pi-bunt3,lhcb-logo,unisiegel-gray}
 
+% https://tex.stackexchange.com/a/98205
 \newsavebox{\unilogo} \newsavebox{\pilogo} \newsavebox{\lhcblogo}
-\sbox{\unilogo}{\includegraphics[height=1.2cm]{../cern-logo-gray.eps}}
-\sbox{\pilogo}{\includegraphics[height=0.75cm]{../cern-logo.eps}}
-\sbox{\lhcblogo}{\includegraphics[height=0.75cm]{../lhcb-logo.eps}}
+\IfFileExists{../cern-logo-gray.eps}{\sbox{\unilogo}{\includegraphics[height=1.2cm]{../cern-logo-gray.eps}} }{\sbox{\unilogo}{\includegraphics[height=1.2cm]{cern-logo-gray.eps}}}
+\IfFileExists{../cern-logo.eps}{     \sbox{\pilogo}{\includegraphics[height=0.75cm]{../cern-logo.eps}}      }{\sbox{\pilogo}{\includegraphics[height=0.75cm]{cern-logo.eps}}     }
+\IfFileExists{../lhcb-logo.eps}{\sbox{\lhcblogo}{\includegraphics[height=0.75cm]{../lhcb-logo.eps}}}{\sbox{\lhcblogo}{\includegraphics[height=0.75cm]{lhcb-logo.eps}}}
 
 \setbeamertemplate{footline}
 {
@@ -150,11 +152,11 @@ breaklines=true,breakautoindent=true}
 }
 
 
-\definecolor{bandgreen}{rgb}{0.4,0.8,0.4}
+\definecolor{bandgreen}{rgb}{0.3,0.8,0.2}
 \newcommand{\FIXME}{{\color{red}FIXME}}
 \newcommand{\arxiv}[1]{{\color{gray}\tiny$[$\href{http://arxiv.org/abs/#1}{arXiv:#1}$]$}}
 \newcommand{\jref}[2]{{\color{gray}\tiny$[$\href{#2}{#1}$]$}}
-\newcommand{\myhref}[2]{\href{#1}{\textcolor{blue}{#2}}}
+\newcommand{\myhref}[2]{\href{#1}{\footnotesize{\textcolor{blue}{\texttt{#2}}}}}
 
 
 \author[Paul]{Paul Seyfert}
