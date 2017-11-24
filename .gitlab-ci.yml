@@ -9,10 +9,12 @@ note:
     script:
       - make
     artifacts:
+      when: on_success
+      expire_in: 2 days
       paths:
         - pseyfert.pdf
 
-# gitlab CI integration for pseyfert/Vertex2017.
+# gitlab CI integration for pseyfert/cern-slide-template
 # Copyright (C) 2017  Paul Seyfert <pseyfert@cern.ch>
 
 # This program is free software: you can redistribute it and/or modify
