@@ -45,13 +45,18 @@ except:
     print "push did ", pushout
 
 try:
-    qrgen = check_output(["qrencode","-o","QR.png",data['web_url']])
+    qrgen = check_output(["qrencode","-o","QR.png",repo_conf['web_url']])
 except:
     print "QR code generation did ", qrgen
 try:
     convert = check_output(["convert","QR.png","-flatten","QR2.png"])
 except:
     print "alpha channel removal did ", convert
+print(" ========================================= ")
+print(" =========   BIG FAT WARNING   =========== ")
+print(" ========================================= ")
+print(" need to add " + repo_conf['web_url'] + " to the tex")
+print(" ========================================= ")
 
 # publication script
 # Copyright (C) 2017  Paul Seyfert <pseyfert@cern.ch>
