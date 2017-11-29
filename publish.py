@@ -18,8 +18,12 @@ TrivialName = os.path.basename(os.getcwd())
 
 if WorldPublic:
     out = check_output(["curl","--header","PRIVATE-TOKEN: "+os.environ["GITLABTOKEN"],"-X","POST","https://gitlab.cern.ch/api/v3/projects?name="+TrivialName+"&visibility_level=20"])
+    check_output(["mv","LICENSE.pub.md","LICENSE.md"])
+    check_output(["rm","LICENSE.int.md"])
 else:
     out = check_output(["curl","--header","PRIVATE-TOKEN: "+os.environ["GITLABTOKEN"],"-X","POST","https://gitlab.cern.ch/api/v3/projects?name="+TrivialName+"&visibility_level=0"])
+    check_output(["mv","LICENSE.int.md","LICENSE.md"])
+    check_output(["rm","LICENSE.pub.md"])
     # TODO share with LHCb
 
 import json
