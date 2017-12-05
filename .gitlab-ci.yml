@@ -5,7 +5,8 @@ before_script:
   - apt-get update
   - apt-get -y upgrade
   - apt-get install -y ttf-mscorefonts-installer
-note:
+
+run-tex:
     script:
       - make
     artifacts:
