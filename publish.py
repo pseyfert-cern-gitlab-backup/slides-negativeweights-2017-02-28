@@ -26,6 +26,8 @@ else:
     check_output(["rm","LICENSE.pub.md"])
     print("TODO share with LHCb")
 
+check_output(["git","rm","logo.png"])
+
 import json
 repo_conf = json.loads(out)
 try:
