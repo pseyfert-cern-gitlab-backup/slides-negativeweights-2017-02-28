@@ -2,7 +2,9 @@
 
 ## code license
 
-As code the two files
+As code the following files
+ - `spellcheck.sh`
+ - `aspell.mk`
  - `Makefile`
  - `gitlab-ci.yml`
 

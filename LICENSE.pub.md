@@ -20,8 +20,10 @@ The slides are furthermore double licensed under [CC-BY-SA-4.0](CC-BY-SA.txt).
 Material within this directory that is not automatically covered by the
 CC-BY-4.0 license by virtue of the license for the final slides or its
 publication in any source material, is published under the CC-BY-SA-4.0 with
-two file exceptions:
+four file exceptions:
 
+ - `spellcheck.sh`
+ - `aspell.mk`
  - `Makefile`
  - `gitlab-ci.yml`
 

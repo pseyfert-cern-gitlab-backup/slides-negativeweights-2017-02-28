@@ -1,21 +1,17 @@
-all:
-	rm -f pseyfert.aux pseyfert.toc pseyfert.snm
-	xelatex pseyfert.tex
-	xelatex pseyfert.tex
-	xelatex pseyfert.tex
+#!/bin/bash
+echo "checking file $1"
+if [[ $(cat $1 | aspell list --encoding=utf-8 -t -d en -p ./.aspell.en.pws | wc -l) -eq 0 ]]
+then
+  exit 0
+else
+  echo "spellcheck of $1 failed due to:"
+  cat $1 | aspell list --encoding=utf-8 -t -d en -p ./.aspell.en.pws | tee -a spelling-mistakes.txt
+  exit 1
+fi
 
-quick:
-	xelatex pseyfert.tex
-clean:
-	rm -rf pseyfert.aux pseyfert.log pseyfert.nav pseyfert.out pseyfert.snm pseyfert.toc
+# verbatim copy from lb-aspell-example
 
-printviews:
-	pdfnup --nup '2x2' pseyfert.pdf
-	gs -sOutputFile=pseyfert-nup-gray.pdf -sDEVICE=pdfwrite -sColorConversionStrategy=Gray -dProcessColorModel=/DeviceGray -dCompatibilityLevel=1.4 -dNOPAUSE -dBATCH pseyfert-nup.pdf
-
-include aspell.mk
-
-# Makefile for pseyfert/slide_template.
+# lb-aspell-example, example for how to use lb-aspell with the LHCb template
 # Copyright (C) 2017  Paul Seyfert <pseyfert@cern.ch>
 
 # This program is free software: you can redistribute it and/or modify

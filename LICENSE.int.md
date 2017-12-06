@@ -22,6 +22,8 @@ The above rules for the final slides apply also to any material included in
 the slides that is not yet covered by the rules for source material. Code
 is an exception here, notably:
 
+ - `spellcheck.sh`
+ - `aspell.mk`
  - `Makefile`
  - `gitlab-ci.yml`
 

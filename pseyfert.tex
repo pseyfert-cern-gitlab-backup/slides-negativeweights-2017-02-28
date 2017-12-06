@@ -159,61 +159,10 @@ breaklines=true,breakautoindent=true}
 \newcommand{\myhref}[2]{\href{#1}{\footnotesize{\textcolor{blue}{\texttt{#2}}}}}
 
 
-\author[Paul]{Paul Seyfert}
-\institute[CERN]{}
-\date[\today]{}
-\title{\myhref{https://github.com/pseyfert/tmva-branch-adder}{tmva-branch-adder}}
-
+\include{header}
 
 \begin{document}
-\maketitle
 
-\section{introduction}
-\subsection{introduction}
-%\begin{frame}[fragile]{introduction}
-\begin{frame}{introduction}
-\begin{itemize}
-\item optimising code is sometimes considered a black art
-%\begin{lstlisting}
-%// branchless implementation of min/max for unsigned
-%static inline unsigned min(unsigned a, unsigned b) noexcept
-%{
-%    const unsigned mask = -(a < b);
-%    return (a \& mask) | (b \& ~mask);
-%}
-%static inline unsigned max(unsigned a, unsigned b) noexcept
-%{
-%    const unsigned mask = -(a > b);
-%    return (a \& mask) | (b \& ~mask);
-%}
-%\end{lstlisting}
-\item true to some extent -- occasionally, you need the odd dirty trick
-\item but most of the time, it's down to:
-\end{itemize}
-\end{frame}
-\begin{frame}
-  \frametitle{conclusion}
-  
-  \begin{itemize}
-      \item headache ahead
-  \end{itemize}
-
-  \vspace{.3\textheight}
-
-  \IfFileExists{./QR2.png}{
-  \footnotesize{slides (excl.\ cern logo) will appear on}
-    
-    \myhref{linkgoeshere}{LINK GOES HERE}\includegraphics[width=.2\textwidth]{./QR2.png}
-}{}
-\end{frame}
-
-\appendix
-
-\begin{frame}
-  \frametitle{BACKUP}
-  backup is for people who can't improvise
-
-  (yes, that's a cheap excuse for not preparing backup slides)
-\end{frame}
+\include{content}
 
 \end{document}
